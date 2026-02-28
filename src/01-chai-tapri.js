@@ -28,4 +28,17 @@
  */
 export function chaiTapriRevenue(customers) {
   // Your code here
+  if (
+    !Number.isFinite(customers) ||
+    customers <= 0 ||
+    !Number.isInteger(customers)
+  )
+    return { totalChai: 0, totalRevenue: 0 };
+
+  const adrakChaiCount = Math.floor(customers / 3);
+  const normalChaiCount = customers - adrakChaiCount;
+  return {
+    totalChai: customers,
+    totalRevenue: adrakChaiCount * 15 + normalChaiCount * 10,
+  };
 }
